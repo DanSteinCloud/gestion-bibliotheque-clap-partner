@@ -1,0 +1,39 @@
+version: '3.1'
+services:
+  clap-partners-postgres:
+    container_name: clap-partners_db
+    image: 'postgres:13.1-alpine'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=bibliotheque_db
+    restart: unless-stopped
+    ports:
+        - "5432:5432"
+    networks:
+      - clap_partner_auth
+    volumes:
+        - ./postgres-data:/var/lib/postgresql/clap_data
+
+  gestion_bibliotheque_api:
+    container_name: gestion_bibliotheque_api_c
+    image: gestion_bibliotheque_api_i
+    build:
+      context: .
+    ports:
+      - '8080:8080'
+    networks:
+      - clap_partner_auth
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    depends_on:
+      - clap-partners-postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://clap-partners-postgres:5432/bibliotheque_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+networks:
+  clap_partner_auth:
+    driver: bridge

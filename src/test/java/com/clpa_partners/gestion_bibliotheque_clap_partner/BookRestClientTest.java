@@ -20,9 +20,9 @@ class BookRestClientTest {
 	}
 	
 	@Test
-	void retreiveAllBooks(String book){
-		List <Book> DisneyBookList = bookAdapterFactory.getService(book).findAllBooks();
-		System.out.println("List of disney bookss : " + DisneyBookList);
+	void retreiveAllBooks(){
+		List <Book> DisneyBookList = bookAdapterFactory.getService("disney").findAllBooks();
+		System.out.println("List of disney books : " + DisneyBookList);
 		assertTrue(DisneyBookList.size()>0);
 	}
 

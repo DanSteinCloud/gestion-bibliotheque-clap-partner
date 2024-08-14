@@ -1,7 +1,6 @@
 package com.clpa_partners.gestion_bibliotheque_clap_partner.domain;
 
 import com.clpa_partners.gestion_bibliotheque_clap_partner.entity.Address;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
