@@ -1,11 +1,15 @@
 package com.clpa_partners.gestion_bibliotheque_clap_partner.domain;
 
+import java.util.Set;
 import java.util.UUID;
 
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.lang.NonNull;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,13 +23,12 @@ import lombok.Setter;
 @Table(name="book")
 @Getter
 @Setter
+@Entity
 public class Book {
 	
 	private UUID bookId;
 	@NonNull
 	private String bookType;
-	@NonNull
-	private UUID authorId;
 	@NonNull
 	private String bookName;
 	@NonNull
@@ -34,6 +37,10 @@ public class Book {
 	private int numberOfPages;
 	
 	private int totalAvailableInStock;
+	
+	@OneToMany
+	@JoinColumn(name = "bookId")
+      private Set<Author> author;
 	
     private Book(BookBuilder bookBuilder) {
 		
@@ -63,10 +70,7 @@ public class Book {
 			  this.bookType = bookType;
 			  return this;
 		}
-	    public BookBuilder withAuthorId(UUID authorId){
-			  this.authorId = authorId;
-			  return this;
-		}
+
 	    public BookBuilder withBookName(String bookName){
 			  this.bookName = bookName;
 			  return this;
@@ -88,7 +92,6 @@ public class Book {
 			 Book book = new Book();
 			 book.setBookId(bookId);
 			 book.setBookType(bookType);
-			 book.setAuthorId(authorId);
 			 book.setBookName(bookName);
 			 book.setBookReference(bookReference);
 			 book.setNumberOfPages(numberOfPages);
@@ -102,7 +105,7 @@ public class Book {
 
 		@Override
 		public String toString() {
-			return "Book [bookId=" + bookId + ", bookTyper=" + bookType + ", UserType=" + authorId + "]";
+			return "Book [bookId=" + bookId + ", bookTyper=" + bookType + ", UserType=" + author + "]";
 			
 		}
 }

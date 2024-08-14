@@ -20,7 +20,6 @@ public class FantasyBook implements BookAdapterService<Book>{
 		DB.add(new Book.BookBuilder()
 				.withBookId(id)
 				.withBookType("fantasy")
-				.withAuthorId(request.getAuthorId())
 				.withBookName(request.getBookName())
 				.withBookReference(request.getBookReference())
 				.withNumberOfPages(request.getNumberOfPages())

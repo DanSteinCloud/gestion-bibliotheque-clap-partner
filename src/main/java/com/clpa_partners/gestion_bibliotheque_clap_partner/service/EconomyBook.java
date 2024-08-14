@@ -19,7 +19,6 @@ public class EconomyBook implements BookAdapterService<Book>{
 		DB.add(new Book.BookBuilder()
 				.withBookId(id)
 				.withBookType("economy")
-				.withAuthorId(request.getAuthorId())
 				.withBookName(request.getBookName())
 				.withBookReference(request.getBookReference())
 				.withNumberOfPages(request.getNumberOfPages())

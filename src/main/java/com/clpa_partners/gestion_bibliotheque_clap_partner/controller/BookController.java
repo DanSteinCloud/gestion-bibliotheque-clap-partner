@@ -15,7 +15,7 @@ import com.clpa_partners.gestion_bibliotheque_clap_partner.domain.Book;
 public class BookController {
 
 	private BookAdapterFactory bookAdapterFactory;
-	  @PostMapping("user")
+	  @PostMapping("book")
 		public void processBooktDetails(@RequestBody Book book) {
 		  bookAdapterFactory.getService(book.getBookType()).addBookByType(book);
 			System.out.println("Successfully Published the book = ' " + book + " ' to the RegistrationTopic");

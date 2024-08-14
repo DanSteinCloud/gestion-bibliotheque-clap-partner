@@ -19,7 +19,6 @@ public class DisneyBook implements BookAdapterService<Book>{
 		DB.add(new Book.BookBuilder()
 				.withBookId(id)
 				.withBookType("disney")
-				.withAuthorId(request.getAuthorId())
 				.withBookName(request.getBookName())
 				.withBookReference(request.getBookReference())
 				.withNumberOfPages(request.getNumberOfPages())

@@ -20,7 +20,6 @@ public class HistoryBook implements BookAdapterService<Book>{
 		DB.add(new Book.BookBuilder()
 				.withBookId(id)
 				.withBookType("history")
-				.withAuthorId(request.getAuthorId())
 				.withBookName(request.getBookName())
 				.withBookReference(request.getBookReference())
 				.withNumberOfPages(request.getNumberOfPages())
