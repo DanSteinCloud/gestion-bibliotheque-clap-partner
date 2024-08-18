@@ -141,7 +141,7 @@ public class Book {
 		
 		public void addAuthor(Author author) {
 		    this.authors.add(author);
-		    //author.getBook().add(this);
+		    author.getBooks().add(this);
 		  }
 		  
 		  public void removeAuthor(UUID authorId) {
@@ -150,7 +150,7 @@ public class Book {
 		    		.findFirst().orElse(null);
 		    if (author != null) {
 		      this.authors.remove(author);
-		      //author.getBook().remove(this);
+		      author.getBooks().remove(this);
 		    }
 		  }
 }

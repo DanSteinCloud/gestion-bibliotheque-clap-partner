@@ -71,29 +71,29 @@ public class Author {
 		@NonNull
 		private String authorName;
 		
-		private Address address;
+        private Address address;
    
 	    // Application of Builder Design pattern
-	    public BookBuilder withAuthorkId(UUID authorId){
+	    public AuthorBuilder withAuthorkId(UUID authorId){
 			  this.authorId = authorId;
 			  return this;
 		}
-	    public BookBuilder withFirstName(String firstName){
+	    public AuthorBuilder withFirstName(String firstName){
 			  this.firstName = firstName;
 			  return this;
 		}
 	    
-	    public BookBuilder withLastName(String lastName){
+	    public AuthorBuilder withLastName(String lastName){
 			  this.lastName = lastName;
 			  return this;
 		}
 	    
-	    public BookBuilder withAuthorName(String authorName){
+	    public AuthorBuilder withAuthorName(String authorName){
 			  this.authorName = authorName;
 			  return this;
 		}
 	    
-	    public BookBuilder withAddress(String addrress){
+	    public AuthorBuilder withAddress(Address address){
 			  this.address = address;
 			  return this;
 		}
@@ -122,7 +122,7 @@ public class Author {
 		    return books;
 		  }
 
-		public void setTutorials(Set<Book> books) {
+		public void setBooks(Set<Book> books) {
 		    this.books = books;
 		  } 
 
