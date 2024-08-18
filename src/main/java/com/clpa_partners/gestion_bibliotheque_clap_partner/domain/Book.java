@@ -89,7 +89,7 @@ public class Book {
 		}
 	    
 	    public Book build(){  
-			 Book book = new Book();
+			 Book book = new Book(null);
 			 book.setBookId(bookId);
 			 book.setBookType(bookType);
 			 book.setBookName(bookName);
